@@ -1,0 +1,58 @@
+﻿@model TalentHunt.Models.image
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TalentHunt</title>
+</head>
+<body>
+    <div>
+        <h4>image</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.image1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.image1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.caption)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.caption)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.talent.ttype)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.talent.ttype)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.user.fname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.user.fname)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.iid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

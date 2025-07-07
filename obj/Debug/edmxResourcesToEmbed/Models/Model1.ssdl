@@ -1,0 +1,591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="huntdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="aid" />
+    </Key>
+    <Property Name="aid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="photo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="eventrate">
+    <Key>
+      <PropertyRef Name="erid" />
+    </Key>
+    <Property Name="erid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="peid" Type="int" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="rating" Type="float" Nullable="false" />
+    <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="eventrequire">
+    <Key>
+      <PropertyRef Name="erid" />
+    </Key>
+    <Property Name="erid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="peid" Type="int" Nullable="false" />
+    <Property Name="tid" Type="int" Nullable="false" />
+    <Property Name="agerange" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="payrange" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="images">
+    <Key>
+      <PropertyRef Name="iid" />
+    </Key>
+    <Property Name="iid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="tid" Type="int" Nullable="false" />
+    <Property Name="image" Type="varchar(max)" Nullable="false" />
+    <Property Name="caption" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="planid" />
+    </Key>
+    <Property Name="planid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="plantype" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="duration" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="maxevents" Type="int" />
+    <Property Name="maxbids" Type="int" />
+    <Property Name="description" Type="varchar(max)" Nullable="false" />
+    <Property Name="benefits" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="production">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pimage" Type="varchar(max)" Nullable="false" />
+    <Property Name="phead" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="contactno" Type="bigint" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="productionevent">
+    <Key>
+      <PropertyRef Name="peid" />
+    </Key>
+    <Property Name="peid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="ename" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="etype" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="emanager" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="startdate" Type="date" Nullable="false" />
+    <Property Name="enddate" Type="date" Nullable="false" />
+    <Property Name="evenu" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="evisitors" Type="int" Nullable="false" />
+    <Property Name="appdeadline" Type="date" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="image" Type="varchar(max)" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ratings">
+    <Key>
+      <PropertyRef Name="rid" />
+    </Key>
+    <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="peid" Type="int" Nullable="false" />
+    <Property Name="rating" Type="float" Nullable="false" />
+    <Property Name="comment" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="subproduction">
+    <Key>
+      <PropertyRef Name="spid" />
+    </Key>
+    <Property Name="spid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="planid" Type="int" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="startdate" Type="date" Nullable="false" />
+    <Property Name="enddate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="subuser">
+    <Key>
+      <PropertyRef Name="suid" />
+    </Key>
+    <Property Name="suid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="planid" Type="int" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="startdate" Type="date" Nullable="false" />
+    <Property Name="enddate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="talent">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ttype" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pincode" Type="int" Nullable="false" />
+    <Property Name="photo" Type="varchar(max)" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="userapply">
+    <Key>
+      <PropertyRef Name="uaid" />
+    </Key>
+    <Property Name="uaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="peid" Type="int" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="appdate" Type="date" Nullable="false" />
+    <Property Name="expay" Type="int" Nullable="false" />
+    <Property Name="message" Type="varchar(max)" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="userprofile">
+    <Key>
+      <PropertyRef Name="upid" />
+    </Key>
+    <Property Name="upid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="tid" Type="int" Nullable="false" />
+    <Property Name="experience" Type="int" Nullable="false" />
+    <Property Name="portfolio" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="userselect">
+    <Key>
+      <PropertyRef Name="usid" />
+    </Key>
+    <Property Name="usid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="peid" Type="int" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="finalpay" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="videos">
+    <Key>
+      <PropertyRef Name="vid" />
+    </Key>
+    <Property Name="vid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="tid" Type="int" Nullable="false" />
+    <Property Name="video" Type="varchar(max)" Nullable="false" />
+    <Property Name="caption" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_eventrate_productionevent">
+    <End Role="productionevent" Type="Self.productionevent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="eventrate" Type="Self.eventrate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productionevent">
+        <PropertyRef Name="peid" />
+      </Principal>
+      <Dependent Role="eventrate">
+        <PropertyRef Name="peid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_eventrate_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="eventrate" Type="Self.eventrate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="eventrate">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_eventrequire_production">
+    <End Role="production" Type="Self.production" Multiplicity="1" />
+    <End Role="eventrequire" Type="Self.eventrequire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="production">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="eventrequire">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_eventrequire_productionevent">
+    <End Role="productionevent" Type="Self.productionevent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="eventrequire" Type="Self.eventrequire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productionevent">
+        <PropertyRef Name="peid" />
+      </Principal>
+      <Dependent Role="eventrequire">
+        <PropertyRef Name="peid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_eventrequire_talent">
+    <End Role="talent" Type="Self.talent" Multiplicity="1" />
+    <End Role="eventrequire" Type="Self.eventrequire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talent">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="eventrequire">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_images_talent">
+    <End Role="talent" Type="Self.talent" Multiplicity="1" />
+    <End Role="images" Type="Self.images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talent">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="images">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_images_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="images" Type="Self.images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="images">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productionevent_production">
+    <End Role="production" Type="Self.production" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="productionevent" Type="Self.productionevent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="production">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="productionevent">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ratings_productionevent">
+    <End Role="productionevent" Type="Self.productionevent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ratings" Type="Self.ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productionevent">
+        <PropertyRef Name="peid" />
+      </Principal>
+      <Dependent Role="ratings">
+        <PropertyRef Name="peid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ratings_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="ratings" Type="Self.ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="ratings">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subproduction_plan">
+    <End Role="plan" Type="Self.plan" Multiplicity="1" />
+    <End Role="subproduction" Type="Self.subproduction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plan">
+        <PropertyRef Name="planid" />
+      </Principal>
+      <Dependent Role="subproduction">
+        <PropertyRef Name="planid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subproduction_production">
+    <End Role="production" Type="Self.production" Multiplicity="1" />
+    <End Role="subproduction" Type="Self.subproduction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="production">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="subproduction">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subuser_plan">
+    <End Role="plan" Type="Self.plan" Multiplicity="1" />
+    <End Role="subuser" Type="Self.subuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plan">
+        <PropertyRef Name="planid" />
+      </Principal>
+      <Dependent Role="subuser">
+        <PropertyRef Name="planid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subuser_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="subuser" Type="Self.subuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="subuser">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userapply_production">
+    <End Role="production" Type="Self.production" Multiplicity="1" />
+    <End Role="userapply" Type="Self.userapply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="production">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="userapply">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userapply_productionevent">
+    <End Role="productionevent" Type="Self.productionevent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="userapply" Type="Self.userapply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productionevent">
+        <PropertyRef Name="peid" />
+      </Principal>
+      <Dependent Role="userapply">
+        <PropertyRef Name="peid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userapply_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="userapply" Type="Self.userapply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="userapply">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userprofile_talent">
+    <End Role="talent" Type="Self.talent" Multiplicity="1" />
+    <End Role="userprofile" Type="Self.userprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talent">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="userprofile">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userprofile_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="userprofile" Type="Self.userprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="userprofile">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userselect_productionevent">
+    <End Role="productionevent" Type="Self.productionevent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="userselect" Type="Self.userselect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productionevent">
+        <PropertyRef Name="peid" />
+      </Principal>
+      <Dependent Role="userselect">
+        <PropertyRef Name="peid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userselect_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="userselect" Type="Self.userselect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="userselect">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_videos_talent">
+    <End Role="talent" Type="Self.talent" Multiplicity="1" />
+    <End Role="videos" Type="Self.videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talent">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="videos">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_videos_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="videos" Type="Self.videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="videos">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="huntdbModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="eventrate" EntityType="Self.eventrate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="eventrequire" EntityType="Self.eventrequire" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="images" EntityType="Self.images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plan" EntityType="Self.plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="production" EntityType="Self.production" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productionevent" EntityType="Self.productionevent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ratings" EntityType="Self.ratings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subproduction" EntityType="Self.subproduction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subuser" EntityType="Self.subuser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="talent" EntityType="Self.talent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userapply" EntityType="Self.userapply" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userprofile" EntityType="Self.userprofile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userselect" EntityType="Self.userselect" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="videos" EntityType="Self.videos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_eventrate_productionevent" Association="Self.FK_eventrate_productionevent">
+      <End Role="productionevent" EntitySet="productionevent" />
+      <End Role="eventrate" EntitySet="eventrate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_eventrate_user" Association="Self.FK_eventrate_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="eventrate" EntitySet="eventrate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_eventrequire_production" Association="Self.FK_eventrequire_production">
+      <End Role="production" EntitySet="production" />
+      <End Role="eventrequire" EntitySet="eventrequire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_eventrequire_productionevent" Association="Self.FK_eventrequire_productionevent">
+      <End Role="productionevent" EntitySet="productionevent" />
+      <End Role="eventrequire" EntitySet="eventrequire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_eventrequire_talent" Association="Self.FK_eventrequire_talent">
+      <End Role="talent" EntitySet="talent" />
+      <End Role="eventrequire" EntitySet="eventrequire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_images_talent" Association="Self.FK_images_talent">
+      <End Role="talent" EntitySet="talent" />
+      <End Role="images" EntitySet="images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_images_user" Association="Self.FK_images_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="images" EntitySet="images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productionevent_production" Association="Self.FK_productionevent_production">
+      <End Role="production" EntitySet="production" />
+      <End Role="productionevent" EntitySet="productionevent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ratings_productionevent" Association="Self.FK_ratings_productionevent">
+      <End Role="productionevent" EntitySet="productionevent" />
+      <End Role="ratings" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ratings_user" Association="Self.FK_ratings_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="ratings" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subproduction_plan" Association="Self.FK_subproduction_plan">
+      <End Role="plan" EntitySet="plan" />
+      <End Role="subproduction" EntitySet="subproduction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subproduction_production" Association="Self.FK_subproduction_production">
+      <End Role="production" EntitySet="production" />
+      <End Role="subproduction" EntitySet="subproduction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subuser_plan" Association="Self.FK_subuser_plan">
+      <End Role="plan" EntitySet="plan" />
+      <End Role="subuser" EntitySet="subuser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subuser_user" Association="Self.FK_subuser_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="subuser" EntitySet="subuser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userapply_production" Association="Self.FK_userapply_production">
+      <End Role="production" EntitySet="production" />
+      <End Role="userapply" EntitySet="userapply" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userapply_productionevent" Association="Self.FK_userapply_productionevent">
+      <End Role="productionevent" EntitySet="productionevent" />
+      <End Role="userapply" EntitySet="userapply" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userapply_user" Association="Self.FK_userapply_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="userapply" EntitySet="userapply" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userprofile_talent" Association="Self.FK_userprofile_talent">
+      <End Role="talent" EntitySet="talent" />
+      <End Role="userprofile" EntitySet="userprofile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userprofile_user" Association="Self.FK_userprofile_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="userprofile" EntitySet="userprofile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userselect_productionevent" Association="Self.FK_userselect_productionevent">
+      <End Role="productionevent" EntitySet="productionevent" />
+      <End Role="userselect" EntitySet="userselect" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userselect_user" Association="Self.FK_userselect_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="userselect" EntitySet="userselect" />
+    </AssociationSet>
+    <AssociationSet Name="FK_videos_talent" Association="Self.FK_videos_talent">
+      <End Role="talent" EntitySet="talent" />
+      <End Role="videos" EntitySet="videos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_videos_user" Association="Self.FK_videos_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="videos" EntitySet="videos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

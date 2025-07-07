@@ -1,0 +1,202 @@
+﻿@model IEnumerable<TalentHunt.Models.eventrate>
+@using TalentHunt.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>TalentHunt</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+
+<body>
+    @{
+        Html.RenderPartial("__Navbar");
+    }
+
+    @{
+
+        if (Session["pid"] != null)
+        {
+
+            <div class="pcoded-main-container2">
+                <div class="pcoded-wrapper">
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- [ Main Content ] start -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card user-card user-card-2 shape-right">
+                                                <div class="card-header border-0 p-2 pb-0">
+                                                    <div class="clearfix mb-1">
+                                                        <div class="pull-left">
+                                                            <h4 class="text-blue h4 mx-3 my-3">Event Ratings Details</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br /><br />
+                                                <div class="card-body pt-0">
+                                                    <div class="user-about-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <div class="col align-items-center my-3">
+                                                                </div>
+
+                                                                <table class="table">
+                                                                    <tr>
+                                                                        <th>
+                                                                            Event Name
+                                                                        </th>
+                                                                        <th>
+                                                                            Expert
+                                                                        </th>
+                                                                        <th>
+                                                                            Ratings
+                                                                        </th>
+                                                                        <th>
+                                                                            Comment
+                                                                        </th>
+                                                                    </tr>
+
+                                                                    @if (TempData["NotFound"] != null)
+                                                                    {
+                                                                        <tr>
+                                                                            <td colspan="5" style="color:indianred"><center>@TempData["NotFound"]</center></td>
+                                                                        </tr>
+                                                                    }
+
+
+                                                                    @foreach (var pdata in (IEnumerable<eventrate>)TempData["pdata"])
+                                                                    {
+                                                                        <tr>
+                                                                            <td style="color:indianred">
+                                                                                <a href="@Url.Action("Details","ProductionEvent",new { id=pdata.productionevent.peid})">@Html.DisplayFor(modelItem => pdata.productionevent.ename)</a>
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.user.fname)
+                                                                            </td>
+                                                                            <td>
+                                                                            @if (pdata.rating == 1)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 1.5)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star-half" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 2)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 2.5)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star-half" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 3)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 3.5)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star-half" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 4)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 4.5)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star-half" style="color:gold"></i>
+                                                                            }
+                                                                            else if (pdata.rating == 5)
+                                                                            {
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                                <i class="fa fa-star" style="color:gold"></i>
+                                                                            }
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.comment)
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+
+                                                                </table>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+
+
+    <!-- js -->
+    <script src="~/vendors/scripts/core.js"></script>
+    <script src="~/vendors/scripts/script.min.js"></script>
+    <script src="~/vendors/scripts/process.js"></script>
+    <script src="~/vendors/scripts/layout-settings.js"></script>
+
+</body>
+</html>
+

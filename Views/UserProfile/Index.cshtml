@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TalentHunt.Models.userprofile>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TalentHunt</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.portfolio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.talent.ttype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user.fname)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.portfolio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.talent.ttype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.fname)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.upid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.upid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.upid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

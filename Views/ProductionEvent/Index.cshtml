@@ -1,0 +1,152 @@
+﻿@model IEnumerable<TalentHunt.Models.productionevent>
+@using TalentHunt.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>TalentHunt</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119386393-1');
+    </script>
+
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+
+<body>
+    @{
+        Html.RenderPartial("__Navbar");
+    }
+
+    @{
+        if (Session["pid"] != null)
+        {
+            <div class="my-3">
+                    <center>
+                        <h1 class="h1 text-blue">All Events</h1>
+                        <br />
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <center>
+                                <div class="mx-0 d-inline-flex" style="max-width:800px">
+                                    @Html.TextBox("Search", "", new { @class = "form-control", placeholder = "Enter Event" })
+                                    <div class="mx-2">
+                                        <input type="submit" class="btn btn-outline-primary" value="Search" name="submit" />
+                                    </div>
+                                </div>
+
+                            </center>
+                        }
+                        <br /><br />
+                        <center>
+                            <p style="color:indianred">@TempData["NotFoundp"]</p>
+                        </center>
+                        
+                            @foreach (var plists in (IEnumerable<productionevent>)TempData["pdata"])
+                            {
+                                <div class="card mx-2 d-inline-flex" style="width: 18rem;">
+                                    <img class="card-img-top" src="@Url.Content(plists.image)" alt="Card image cap">
+                                    <div class="card-body">
+                                        <p class="card-text" style="color:indianred"><strong>@Html.DisplayFor(modelItem => plists.ename)</strong></p>
+                                        <p class="card-text">Start Date : @plists.startdate.ToString("dd/MM/yyyy") </p>
+                                        <p class="card-text">End Date : @plists.enddate.ToString("dd/MM/yyyy") </p>
+                                        <p class="card-text">Deadline : @plists.appdeadline.ToString("dd/MM/yyyy")</p>
+                                        <p class="card-text">@Html.DisplayFor(modelItem => plists.description)</p>
+                                    </div>
+                                    @Html.ActionLink("View More", "Details", "ProductionEvent", new { id = plists.peid }, new { @class = "btn btn-outline-primary my-3 mx-2" })
+                                    @Html.ActionLink("Remove", "Block", "ProductionEvent", new { id = plists.peid }, new { @class = "btn btn-outline-danger my-3 mx-2", onclick = $"return confirm('Are you sure you want to remove {plists.ename} event?')" })
+                                </div>
+                            }
+                        </center>
+            </div> 
+        }
+
+        if (Session["uid"] != null)
+        {
+            <div class="my-3">
+                <center>
+                    <h1 class="h1 text-blue mb-30">All Events</h1>
+                    <br />
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        <center>
+                            <div class="mx-0 d-inline-flex" style="max-width:800px">
+                                @Html.TextBox("Search", "", new { @class = "form-control", placeholder = "Enter Event" })
+                                <div class="mx-2">
+                                    <input type="submit" class="btn btn-outline-primary" value="Search" name="submit" />
+                                </div>
+                            </div>
+
+                        </center>
+                    }
+                    <br /><br />
+                    <center>
+                        <p style="color:indianred">@TempData["NotFoundpe"]</p>
+                    </center>
+                    
+                        @foreach (var item in Model)
+                        {
+                            <div class="card mx-2 d-inline-flex" style="width: 18rem;">
+                                <img class="card-img-top" src="@Url.Content(item.image)" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text" style="color:indianred"><strong>@Html.DisplayFor(modelItem => item.ename)</strong></p>
+                                    <p class="card-text">Start Date : @item.startdate.ToString("dd/MM/yyyy") </p>
+                                    <p class="card-text">End Date : @item.enddate.ToString("dd/MM/yyyy") </p>
+                                    <p class="card-text">Deadline : @item.appdeadline.ToString("dd/MM/yyyy")</p>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.description)</p>
+                                </div>
+                                @Html.ActionLink("View More", "Details", "ProductionEvent", new { id = item.peid }, new { @class = "btn btn-outline-primary my-3 mx-2" })
+                            </div>
+                        }
+                </center>
+            </div>
+        }
+    }
+
+
+    <!-- js -->
+    <script src="~/vendors/scripts/core.js"></script>
+    <script src="~/vendors/scripts/script.min.js"></script>
+    <script src="~/vendors/scripts/process.js"></script>
+    <script src="~/vendors/scripts/layout-settings.js"></script>
+
+</body>
+</html>
+

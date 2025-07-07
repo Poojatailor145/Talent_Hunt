@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="huntdbModelStoreContainer" CdmEntityContainer="huntdbEntities1">
+    <EntitySetMapping Name="eventrequires">
+      <EntityTypeMapping TypeName="huntdbModel.eventrequire">
+        <MappingFragment StoreEntitySet="eventrequire">
+          <ScalarProperty Name="erid" ColumnName="erid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="peid" ColumnName="peid" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="agerange" ColumnName="agerange" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="payrange" ColumnName="payrange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="images">
+      <EntityTypeMapping TypeName="huntdbModel.image">
+        <MappingFragment StoreEntitySet="images">
+          <ScalarProperty Name="iid" ColumnName="iid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="image1" ColumnName="image" />
+          <ScalarProperty Name="caption" ColumnName="caption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plans">
+      <EntityTypeMapping TypeName="huntdbModel.plan">
+        <MappingFragment StoreEntitySet="plan">
+          <ScalarProperty Name="maxbids" ColumnName="maxbids" />
+          <ScalarProperty Name="maxevents" ColumnName="maxevents" />
+          <ScalarProperty Name="planid" ColumnName="planid" />
+          <ScalarProperty Name="plantype" ColumnName="plantype" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="benefits" ColumnName="benefits" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productions">
+      <EntityTypeMapping TypeName="huntdbModel.production">
+        <MappingFragment StoreEntitySet="production">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="pimage" ColumnName="pimage" />
+          <ScalarProperty Name="phead" ColumnName="phead" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subproductions">
+      <EntityTypeMapping TypeName="huntdbModel.subproduction">
+        <MappingFragment StoreEntitySet="subproduction">
+          <ScalarProperty Name="spid" ColumnName="spid" />
+          <ScalarProperty Name="planid" ColumnName="planid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="startdate" ColumnName="startdate" />
+          <ScalarProperty Name="enddate" ColumnName="enddate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="talents">
+      <EntityTypeMapping TypeName="huntdbModel.talent">
+        <MappingFragment StoreEntitySet="talent">
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="ttype" ColumnName="ttype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="huntdbModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userapplies">
+      <EntityTypeMapping TypeName="huntdbModel.userapply">
+        <MappingFragment StoreEntitySet="userapply">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="uaid" ColumnName="uaid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="peid" ColumnName="peid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="appdate" ColumnName="appdate" />
+          <ScalarProperty Name="expay" ColumnName="expay" />
+          <ScalarProperty Name="message" ColumnName="message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userprofiles">
+      <EntityTypeMapping TypeName="huntdbModel.userprofile">
+        <MappingFragment StoreEntitySet="userprofile">
+          <ScalarProperty Name="upid" ColumnName="upid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="experience" ColumnName="experience" />
+          <ScalarProperty Name="portfolio" ColumnName="portfolio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userselects">
+      <EntityTypeMapping TypeName="huntdbModel.userselect">
+        <MappingFragment StoreEntitySet="userselect">
+          <ScalarProperty Name="usid" ColumnName="usid" />
+          <ScalarProperty Name="peid" ColumnName="peid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="finalpay" ColumnName="finalpay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="videos">
+      <EntityTypeMapping TypeName="huntdbModel.video">
+        <MappingFragment StoreEntitySet="videos">
+          <ScalarProperty Name="vid" ColumnName="vid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="video1" ColumnName="video" />
+          <ScalarProperty Name="caption" ColumnName="caption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subusers">
+      <EntityTypeMapping TypeName="huntdbModel.subuser">
+        <MappingFragment StoreEntitySet="subuser">
+          <ScalarProperty Name="enddate" ColumnName="enddate" />
+          <ScalarProperty Name="startdate" ColumnName="startdate" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="planid" ColumnName="planid" />
+          <ScalarProperty Name="suid" ColumnName="suid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eventrates">
+      <EntityTypeMapping TypeName="huntdbModel.eventrate">
+        <MappingFragment StoreEntitySet="eventrate">
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="peid" ColumnName="peid" />
+          <ScalarProperty Name="erid" ColumnName="erid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ratings">
+      <EntityTypeMapping TypeName="huntdbModel.rating">
+        <MappingFragment StoreEntitySet="ratings">
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="rating1" ColumnName="rating" />
+          <ScalarProperty Name="peid" ColumnName="peid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="rid" ColumnName="rid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="huntdbModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="aname" ColumnName="aname" />
+          <ScalarProperty Name="aid" ColumnName="aid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productionevents">
+      <EntityTypeMapping TypeName="huntdbModel.productionevent">
+        <MappingFragment StoreEntitySet="productionevent">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="appdeadline" ColumnName="appdeadline" />
+          <ScalarProperty Name="evisitors" ColumnName="evisitors" />
+          <ScalarProperty Name="evenu" ColumnName="evenu" />
+          <ScalarProperty Name="enddate" ColumnName="enddate" />
+          <ScalarProperty Name="startdate" ColumnName="startdate" />
+          <ScalarProperty Name="emanager" ColumnName="emanager" />
+          <ScalarProperty Name="etype" ColumnName="etype" />
+          <ScalarProperty Name="ename" ColumnName="ename" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="peid" ColumnName="peid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

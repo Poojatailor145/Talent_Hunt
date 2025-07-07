@@ -1,0 +1,58 @@
+﻿@model TalentHunt.Models.subuser
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>subuser</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.startdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.startdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.enddate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.enddate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.plan.plantype)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.plan.plantype)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.production.pname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.production.pname)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.suid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

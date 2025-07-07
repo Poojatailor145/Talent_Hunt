@@ -1,0 +1,78 @@
+﻿<header class="navbar pcoded-header navbar-expand-lg navbar-light headerpos-fixed">
+
+
+
+    @{
+        if (Session["uid"] != null)
+        {
+                <div class="collapse navbar-collapse">
+                    <div class="brand-logo">
+                        <a href="login.html">
+                            <img src="~/vendors/images/logo1.png" alt="" height="50" width="125">
+                        </a>
+                    </div>
+                    <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("Profile", "Profile", "User")</p>
+                    <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("Events", "Index", "ProductionEvent")</p>
+                    <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("Productions", "Index", "Production")</p>
+                    <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("My Biddings", "Index", "UserApply")</p>
+                    <ul class="navbar-nav ml-auto">
+                        <li>
+                            <div class="dropdown drp-user">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon feather icon-settings"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-notification">
+                                    <ul class="pro-body">
+                                        <li><a href="@Url.Action("Edit","User",new { id=Session["uid"]})" class="dropdown-item"><i class="feather icon-edit"></i> Edit Profile</a></li>
+                                        <li><a href="@Url.Action("Index","Rating")" class="dropdown-item"><i class="feather icon-star-on text-warning"></i>Ratings</a></li>
+                                        <li><a href="@Url.Action("Index","SubUser")" class="dropdown-item"><i class="feather icon-monitor text-success"></i>Subscriptions</a></li>
+                                        <li><a href="@Url.Action("Logout","User")" class="dropdown-item"><i class="feather icon-power text-danger"></i> Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            }
+            if (Session["pid"] != null)
+            {
+                    <div class="collapse navbar-collapse">
+                        <div class="brand-logo">
+                            <a href="login.html">
+                                <img src="~/vendors/images/logo1.png" alt="" height="50" width="125">
+                            </a>
+                        </div>
+                        <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("Profile", "Proinfo", "Production")</p>
+                        <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("Events", "Index", "ProductionEvent")</p>
+                        <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("Talents", "Index", "User")</p>
+                        <p class="noti-head m-b-5 mx-4 mb-0">@Html.ActionLink("Biddings", "Index", "UserApply")</p>
+                        <ul class="navbar-nav ml-auto">
+                            <li>
+                                <div class="dropdown drp-user">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon feather icon-settings"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right profile-notification">
+                                        <ul class="pro-body">
+                                            <li><a href="@Url.Action("Edit","Production",new { id=Session["pid"]})" class="dropdown-item"><i class="feather icon-edit"></i>Edit Profile</a></li>
+                                            <li><a href="@Url.Action("Index","EventRate")" class="dropdown-item"><i class="feather icon-star-on text-warning"></i>Ratings</a></li>
+                                            <li><a href="@Url.Action("Index","SubProduction")" class="dropdown-item"><i class="feather icon-monitor text-success"></i>Subscriptions</a></li>
+                                            <li><a href="@Url.Action("Logout","User")" class="dropdown-item"><i class="feather icon-power text-danger"></i> Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                }
+            }
+
+
+
+
+
+
+
+                
+
+</header>

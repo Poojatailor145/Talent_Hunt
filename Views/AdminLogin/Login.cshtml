@@ -1,0 +1,75 @@
+﻿@model TalentHunt.ModelView.adminlogin
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Admin | Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+
+</head>
+<body>
+<!-- [ signin-img ] start -->
+<div class="auth-wrapper aut-bg-img-side cotainer-fiuid align-items-stretch">
+    <div class="row align-items-center w-100 align-items-stretch bg-white">
+        <div class="d-none d-lg-flex col-md-8 aut-bg-img d-md-flex justify-content-center">
+
+        </div>
+        <div class="col-md-4 align-items-stret h-100 ad-flex justify-content-center">
+            <div class=" auth-content">
+                <img src="~/vendors/images/logo1.png" height="40" width="145" alt="" class="img-fluid mb-4">
+                <h4 class="mb-3 f-w-400">Login into your account</h4>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group mb-3">
+                        <label class="form-label">Enter User Name</label>
+                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control form-control-lg", @placeholder = "Enter UserName", value = Model.username } })
+                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Enter Password</label>
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control form-control-lg", @placeholder = "*****", value = Model.password } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    </div>
+                    <span id="clearC" class="text-danger" onkeypress="clearData()">@ViewBag.errmsg</span>
+                    <div class="form-group mt-2">
+                        <div class="d-inlin">
+                            @if (Model.rememberme == true)
+                            {
+                                @Html.CheckBoxFor(model => model.rememberme, new { htmlAttributes = new { @class = "form-control form-control-lg", @type = "checkbox", @checked="checked" } })
+                            }
+                            else
+                            {
+                                @Html.CheckBoxFor(model => model.rememberme, new { htmlAttributes = new { @class = "form-control form-control-lg", @type = "checkbox" } })
+                            }
+                            <label for="RememberMe" class="cr">Save Credentials</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-primary mb-4" />
+                }
+                <p class="mb-2 text-muted">Forgot password? <a href="/AdminLogin/check" class="f-w-400">Reset</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/vendor-all.min.js"></script>
+<script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

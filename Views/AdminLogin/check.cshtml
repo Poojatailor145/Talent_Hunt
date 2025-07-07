@@ -1,0 +1,98 @@
+﻿@model TalentHunt.ModelView.emailcheck
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin | Reset Passsword</title>
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <!-- [ reset-password ] start -->
+        <div class="auth-content container">
+            <div class="card">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <img src="~/assets/images/logo-dark.svg" alt="" class="img-fluid mb-4">
+                            <h4 class="mb-3 f-w-400">Reset your password</h4>
+                            @if (TempData["otp"] != null)
+                            {
+                                using (Html.BeginForm("checkotp","AdminLogin",FormMethod.Post))
+                                {
+                                    <div class="form-group mb-4">
+
+                                        <label class="col-form-label">Email</label>
+                                        <input type="email" name="email" class="form-control" value="@TempData["email"]" readonly />
+
+                                        
+                                        <label class="col-form-label">OTP</label>
+                                        <input type="password" name="eotp" class="form-control" />
+                                        <span class="text-danger">@TempData["otperr"]</span>
+
+                                        @*<label class="col-form-label">New Password</label>
+                                        <input type="password" name="pass" class="form-control" />
+                                        <span class="text-danger">@TempData["passerr"]</span>
+                                        <label class="col-form-label">Confirm New Password</label>
+                                        <input type="password" name="cpass" class="form-control" />
+                                        <span class="text-danger">@TempData["cpasserr"]</span>*@
+                                    </div>
+                                    <input type="submit" class="btn btn-primary mb-4" value="Submit" />
+                                }
+                            }
+                            else
+                            {
+                                using (Html.BeginForm())
+                                {
+                                    <div class="form-group mb-4">
+                                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "col-form-label" })
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Email" } })
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                        <span class="text-danger">@TempData["emailerr"]</span>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary mb-4" value="Submit" />
+                                }
+                            }
+                        <a href="/AdminLogin/Login"><span class="text-success">Login <span class="text-dark">Instead?</span></span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-none d-md-block">
+                        <img src="~/assets/images/auth/auth-bg.jpg" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ reset-password ] end -->
+    </div>
+
+
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

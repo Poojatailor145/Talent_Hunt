@@ -1,0 +1,97 @@
+﻿@model TalentHunt.ModelView.ratingv
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>TalentHunt</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+<body>
+
+    @{
+        Html.RenderPartial("__Navbar");
+
+    }
+
+    <div class="main-container">
+        <div class="pd-tr-20 xs-pd-10-10">
+            <div class="min-height-200px">
+                <!-- Default Basic Forms Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Add Ratings to your selected expert</h4>
+                            <hr style="color:darkblue" />
+                        </div>
+                    </div>
+                    @using (Html.BeginForm("Create", "Rating", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("userid", (object)ViewBag.uid)
+                        @Html.Hidden("peid", (object)ViewBag.eid)
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Rating</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.rating1, new { htmlAttributes = new { @class = "form-control" ,@type="number",@max="5",@min="1",@step="0.5"} })
+                                @Html.ValidationMessageFor(model => model.rating1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Comment</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.comment, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.comment, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <center>
+                            <input type="submit" value="Submit" class=" btn btn-primary" />
+                        </center>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- js -->
+    <script src="~/vendors/scripts/core.js"></script>
+    <script src="~/vendors/scripts/script.min.js"></script>
+    <script src="~/vendors/scripts/process.js"></script>
+    <script src="~/vendors/scripts/layout-settings.js"></script>
+</body>
+</html>

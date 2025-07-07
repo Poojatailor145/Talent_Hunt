@@ -1,0 +1,112 @@
+﻿@model TalentHunt.Models.productionevent
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TalentHunt</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>productionevent</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ename)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ename)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.etype)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.etype)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.emanager)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.emanager)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.startdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.startdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.enddate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.enddate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.evenu)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.evenu)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.evisitors)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.evisitors)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.appdeadline)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.appdeadline)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.production.pname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.production.pname)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

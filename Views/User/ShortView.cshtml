@@ -1,0 +1,192 @@
+﻿@model TalentHunt.Models.user
+@using TalentHunt.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>TalentHunt</title>>
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+
+<body class="">
+
+    @{
+        Html.RenderPartial("_Header");
+        Html.RenderPartial("_Leftbar");
+    }
+    <!-- [ Main Content ] start -->
+    <div class="main-container-2">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card user-card user-card-2 shape-right">
+                                        <div class="card-header border-0 p-2 pb-0">
+                                            <div class="clearfix mb-1">
+                                                <div class="pull-left">
+                                                    <h4 class="text-blue h4 mx-3 my-3">User Details</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mx-4">
+                                            <div class="col-auto col pr-0">
+                                                <div class="change-profile">
+                                                    <div class="dropdown">
+                                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <div class="profile-dp">
+                                                                <img class="img-radius img-fluid wid-100" src="@Url.Content(Model.photo)" alt="User image">
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <h6 class="mb-1" style="color:indianred">@Html.DisplayFor(model => model.fname)  @Html.DisplayFor(model => model.lname)</h6>
+                                                <p>
+                                                    @Html.DisplayFor(model => model.gender) | @Html.DisplayFor(model => model.age)
+                                                </p>
+                                                <p class="mb-0" style="border-radius:50%; border-color:lawngreen; color:green">
+                                                    @TempData["ratings"] <i class="fa fa-star" style="color:gold"></i>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="card-body pt-0">
+                                            <div class="user-about-block">
+                                                <div class="row align-items-center">
+                                                    <div class="col">
+                                                        <div class="col align-items-center my-3">
+                                                        </div>
+
+                                                        <table border="0" class="table">
+                                                            <tr>
+                                                                <th>Address</th>
+                                                                <td>@Html.DisplayFor(model => model.address)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>City</th>
+                                                                <td>@Html.DisplayFor(model => model.city)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>State</th>
+                                                                <td>@Html.DisplayFor(model => model.state)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Pincode</th>
+                                                                <td>@Html.DisplayFor(model => model.pincode)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Email</th>
+                                                                <td>@Html.DisplayFor(model => model.email)</td>
+                                                            </tr>
+                                                        </table>
+
+
+                                                        <hr style="color:darkblue" />
+
+                                                        <div>
+                                                            <p style="color:black; font-size:large" class="mb-1">TALENTS</p><br />
+                                                            @foreach (var pdata in (IEnumerable<userprofile>)TempData["talentlists"])
+                                                            {
+                                                                <h5 style="color:indianred">@Html.DisplayFor(modelItem => pdata.talent.ttype)</h5>
+                                                                <p class="mb-0">Experience : @Html.DisplayFor(modelItem => pdata.experience) years</p>
+                                                                <p class="mb-0">Portfolio : @Html.DisplayFor(modelItem => pdata.portfolio)</p>
+                                                                <br />
+                                                            }
+                                                        </div>
+
+                                                        <hr style="color:darkblue" />
+
+
+
+                                                        <p style="color:black; font-size:large" class="mb-1">IMAGES</p><br />
+                                                        <br />
+                                                        <div class="d-inline-flex">
+
+                                                            <br />
+                                                            <div class="mb-20">
+                                                                @foreach (var piclists in (IEnumerable<image>)TempData["piclists"])
+                                                                {
+                                                                    <div class="card d-inline-flex mx-2">
+                                                                        <img src="@Url.Content(piclists.image1)" height="200" width="200" class="mx-2" />
+                                                                        <br />
+                                                                        <p class="mx-2">@piclists.caption</p>
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </div><br />
+
+                                                        <hr style="color:darkblue" />
+
+                                                        <p style="color:black; font-size:large" class="mb-1">VIDEOS</p>
+                                                        <div class="d-inline-flex">
+
+                                                            <br />
+                                                            <div class="mb-20">
+                                                                @foreach (var videolists in (IEnumerable<video>)TempData["videolists"])
+                                                                {
+                                                                    <div class="card d-inline-flex mx-2">
+                                                                        <video height="300" width="300" controls class="mx-2">
+                                                                            <source src="@Url.Content(videolists.video1)" type="audio/mp4" />
+                                                                        </video><br />
+                                                                        <p class="mx-2">@videolists.caption</p>
+                                                                    </div>
+                                                                }
+                                                            </div><br />
+                                                        </div><br />
+                                                        <center>
+                                                            @Html.ActionLink("Go Back","UserView","User",new { @class="btn btn-outline-primary"})
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Required Js -->
+        <script src="~/assets/js/vendor-all.min.js"></script>
+        <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/assets/js/pcoded.min.js"></script>
+
+        <!-- js -->
+        <script src="~/vendors/scripts/core.js"></script>
+        <script src="~/vendors/scripts/script.min.js"></script>
+        <script src="~/vendors/scripts/process.js"></script>
+        <script src="~/vendors/scripts/layout-settings.js"></script>
+</body>
+</html>
+
+
+
+

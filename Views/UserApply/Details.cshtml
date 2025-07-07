@@ -1,0 +1,74 @@
+﻿@model TalentHunt.Models.userapply
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TalentHunt</title>
+</head>
+<body>
+    <div>
+        <h4>userapply</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.appdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.appdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.expay)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.expay)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.message)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.message)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.production.pname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.production.pname)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productionevent.ename)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productionevent.ename)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.user.fname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.user.fname)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.uaid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

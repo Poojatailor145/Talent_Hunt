@@ -1,0 +1,126 @@
+﻿@model IEnumerable<TalentHunt.Models.production>
+@using TalentHunt.Models
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>TalentHunt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+<body>
+    @{ Html.RenderPartial("__Navbar"); }
+
+    <div class="pcoded-main-container-2">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            @*[ Main Content ] start*@
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card user-card user-card-2 shape-right">
+                                        <div class="card-header border-0 p-2 pb-0">
+                                            <div class="cover-img-block" style="height:300px">
+                                                <img src="~/assets/images/user/wall2.jpg" alt="" class="img-fluid">
+                                                <div class="overlay"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <div class="user-about-block">
+                                                <div class="row align-items-center">
+                                                    <div class="col">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto col pr-0">
+                                                                <div class="change-profile">
+                                                                    <div class="dropdown">
+                                                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <div class="profile-dp">
+                                                                                <img class="img-radius img-fluid wid-100" src="@Url.Content(Session["pimage"].ToString())" alt="User image">
+                                                                                <div class="overlay">
+                                                                                    <span>change</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                        <div class="dropdown-menu">
+                                                                            <a class="dropdown-item"><i class="feather icon-upload-cloud mr-2"></i>upload new</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+
+                                                                @foreach (var plist in (IEnumerable<production>)TempData["pdata"])
+                                                                {
+                                                    <h6 class="mb-1">@plist.pname</h6>
+                                                                    <p class="mb-0">@plist.phead</p>}
+                                                            </div>
+                                                        </div>
+
+                                                        @foreach (var plist in (IEnumerable<production>)TempData["pdata"])
+                                                        {
+                                                    @plist.description}
+                                                        <br /><br />
+                                                        @if (TempData["max"].Equals("Yes"))
+                                                        {
+                                                            @*<div>
+                                                                @Html.ActionLink("Upgrade your plan to start an event", "upgradeplan", "Plan", new { @area = "" }, new { @class = "btn btn-outline-danger" })
+                                                            </div> *@
+                                                        }
+                                                        else
+                                                        {
+                                                            <div>
+                                                                @Html.ActionLink("Add Event", "Create", "ProductionEvent", new { id = Session["pid"] }, new { @class = "btn btn-outline-primary" })
+                                                            </div>
+                                                        }
+
+
+                                                        <hr style="color:darkblue" />
+
+                                                        <div>
+                                                            <p style="color:black; font-size:large" class="mb-1">INFO</p>
+
+
+                                                            <div class="mb-0">
+                                                                @foreach (var plists in (IEnumerable<production>)TempData["pdata"])
+                                                                {
+                                                    <p>Address : @plists.address</p>
+                                                                    <p>Contact : @plists.contactno</p>
+                                                                                    <p>E-mail : @plists.email</p>}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/pcoded.min.js"></script>
+</body>
+</html>

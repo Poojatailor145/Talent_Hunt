@@ -1,0 +1,110 @@
+﻿@model IEnumerable<TalentHunt.Models.userprofile>
+@using TalentHunt.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>TalentHunt</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119386393-1');
+    </script>
+
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+
+<body>
+    @{
+        Html.RenderPartial("__Navbar");
+    }
+
+    <div class="my-3">
+        <center>
+            <h1 class="h1 text-blue">Talents</h1><br />
+            @using (Html.BeginForm(FormMethod.Post))
+            {
+                <center>
+                <div class="mx-0 d-inline-flex" style="max-width:800px">
+                    <select class="form-control" id="tid" name="tid">
+                        <option selected="selected" value="0">-- Select Talent --</option>
+                        @foreach (var data in (IEnumerable<talent>)TempData["talents"])
+                        {
+                            <option value="@data.tid">@Html.DisplayFor(modelItem => data.ttype)</option>
+                        }
+                    </select>
+                        <input type="submit" class="btn btn-outline-primary mx-2" value="Search" name="submit" />
+                </div>
+                </center>
+             }
+        <br /><br />
+
+            <center>
+                <p style="color:indianred">@TempData["NotFound"]</p>
+            </center>
+        <div class="mb-20 ">
+            @foreach (var item in Model)
+            {
+                <div class="card mx-2 d-inline-flex" style="width: 18rem;">
+                    <img class="card-img-top" src="@Url.Content(item.user.photo)" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text"><strong>@Html.DisplayFor(modelItem => item.user.fname)  @Html.DisplayFor(modelItem => item.user.lname)</strong></p>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.user.gender) | @Html.DisplayFor(modelItem => item.user.age)</p>
+                        <p class="card-text" style="color:indianred">@Html.DisplayFor(modelItem => item.talent.ttype)</p>
+                    </div>
+                    @Html.ActionLink("View Talent", "Details", "User", new { id = item.userid }, new { @class = "btn btn-outline-primary my-3 mx-2" })
+                </div>
+            }
+        </div>
+</center>
+    </div>
+
+
+
+
+
+    <!-- js -->
+    <script src="~/vendors/scripts/core.js"></script>
+    <script src="~/vendors/scripts/script.min.js"></script>
+    <script src="~/vendors/scripts/process.js"></script>
+    <script src="~/vendors/scripts/layout-settings.js"></script>
+
+</body>
+</html>
+

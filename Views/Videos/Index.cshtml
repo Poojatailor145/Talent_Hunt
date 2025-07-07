@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TalentHunt.Models.video>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TalentHunt</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.video1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.caption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.talent.ttype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user.fname)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.video1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.caption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.talent.ttype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.fname)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.vid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.vid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.vid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,594 @@
+﻿@model TalentHunt.Models.productionevent
+@using TalentHunt.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>TalentHunt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Dasho Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords" content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, Dasho, Dasho bootstrap admin template">
+    <meta name="author" content="Phoenixcoded" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+
+<body class="">
+
+    @{
+        Html.RenderPartial("__Navbar");
+    }
+    <!-- [ Main Content ] start -->
+    <!-- [ Main Content ] start -->
+        <div class="main-container">
+            <div class="col-sm-12">
+                <div class="card user-card user-card-2 shape-right">
+                    <div class="card-header border-0 p-2 pb-0">
+                        <div class="clearfix mb-1">
+                            <div class="pull-left">
+                                <h4 class="text-blue h4 mx-3 my-3">Event Details </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mx-4">
+                        <div class="col-auto col pr-0">
+                            <div class="change-profile">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="profile-dp">
+                                            <img class="img-radius img-fluid wid-100" src="@Url.Content(Model.image)" alt="User image">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="mb-1">@Html.DisplayFor(model => model.ename)</h6>
+                            <p>
+                                By @TempData["name"]
+                            </p>
+                            @if (TempData["erates"].Equals("Yes"))
+                            {
+                                @Html.ActionLink("Rate Your experience", "Create", "EventRate", new { peid = Model.peid, userid = Session["uid"] }, new { @class = "btn btn-outline-success" });
+                            }
+                            else if (TempData["erated"].Equals("Yes"))
+                            {
+                                foreach (var rt in (IEnumerable<eventrate>)TempData["rate"])
+                                {
+                                    if (rt.rating == 1)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 1.5)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star-half" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 2)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 2.5)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star-half" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 3)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 3.5)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star-half" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 4)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 4.5)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star-half" style="color:gold"></i>
+                                    }
+                                    else if (rt.rating == 5)
+                                    {
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                        <i class="fa fa-star" style="color:gold"></i>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="card-body pt-0">
+                        <div class="user-about-block">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <div class="col align-items-center my-3">
+                                    </div>
+
+                                    <table border="0" class="table">
+                                        <tr>
+                                            <th>Event Type</th>
+                                            <td>@Html.DisplayFor(model => model.etype)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Event Manager</th>
+                                            <td>@Html.DisplayFor(model => model.emanager)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Event Start Date</th>
+                                            <td>@Html.DisplayFor(model => model.startdate)</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>Event End Date</th>
+                                            <td>@Html.DisplayFor(model => model.enddate)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Venue</th>
+                                            <td>@Html.DisplayFor(model => model.evenu)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Visitors Count</th>
+                                            <td>@Html.DisplayFor(model => model.evisitors)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Application Deadline</th>
+                                            <td>@Html.DisplayFor(model => model.appdeadline)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Description</th>
+                                            <td>@Html.DisplayFor(model => model.description)</td>
+                                        </tr>
+                                        @if (Session["pid"] != null)
+                                        {
+                                            <tr>
+                                                <td colspan="2">
+                                                    <center>
+                                                        @Html.ActionLink("Edit Event Details", "Edit", "ProductionEvent", new { id = Model.peid }, new { @area = "" })
+                                                    </center>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                        <tr style="color:indianred">
+                                            <td colspan="2" style="font-size:20px">
+                                                Event Requirements
+                                            </td>
+                                        </tr>
+                                        @foreach (var reqs in (IEnumerable<eventrequire>)TempData["reqs"])
+                                        {
+                                            <tr>
+                                                <th>Talent</th>
+                                                <td>@Html.DisplayFor(modelItem => reqs.talent.ttype)</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Age Range</th>
+                                                <td>@Html.DisplayFor(modelItem => reqs.agerange)</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Gender</th>
+                                                <td>@Html.DisplayFor(modelItem => reqs.gender)</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Payment Range</th>
+                                                <td>@Html.DisplayFor(modelItem => reqs.payrange)</td>
+                                            </tr>
+                                            if (Session["pid"] != null)
+                                            {
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <center>
+                                                            @Html.ActionLink("Edit Requirements Details", "Edit", "EventRequire", new { id = reqs.erid }, new { @area = "" })
+                                                        </center>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        }
+                                    </table>
+                                    @if (Session["uid"] != null)
+                                    {
+                                        if (TempData["bidded"].Equals("Yes"))
+                                        {
+                                            foreach (var apply in (IEnumerable<userapply>)TempData["status"])
+                                            {
+
+                                                if (apply.status.Equals("selected"))
+                                                {
+                                                    <center>
+                                                        <p style="color:green;font-size:30px">Congrats ! You are selected !</p>
+                                                    </center>
+                                                }
+                                                else
+                                                {
+                                                    <center>
+                                                        @Html.ActionLink("Modify Your Bid", "Edit", "UserApply", new { id = apply.uaid }, new { @class = "btn btn-primary" })
+                                                    </center>
+                                                }
+                                            }
+                                        }
+                                        if (TempData["bidded"].Equals("No"))
+                                        {
+                                            if (TempData["max"].Equals("Yes"))
+                                            {
+                                                <center>
+                                                    @Html.ActionLink("Upgrade your plan to bid", "planselect", "Plan", new { @area = "" }, new { @class = "btn btn-outline-danger" })
+                                                </center>
+                                            }
+                                            else if (TempData["deadline"].Equals("Past"))
+                                            {
+                                                <center class="text-danger">Oops ! You missed the deadline</center>
+                                            }
+                                            else if (TempData["max"].Equals("No"))
+                                            {
+                                                <center>
+                                                    @Html.ActionLink("Apply", "Create", "UserApply", new { id = Model.peid }, new { @class = "btn btn-primary" })
+                                                </center>
+                                            }
+
+                                        }
+                                    }
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- [ Main Content ] start -->
+        <div class="main-container mt-0">
+            <div class="col-sm-12">
+                <div class="card user-card user-card-2 shape-right">
+
+                    @if (TempData["selected"].Equals("Yes"))
+                    {
+                        <div class="card-header border-0 p-2 pb-0">
+                            <div class="clearfix mb-1">
+                                <div class="pull-left">
+                                    <h4 class="text-blue h4 mx-3 my-3">Selected Expert</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="card-body pt-0">
+                            <div class="user-about-block">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="col align-items-center my-3">
+                                        </div>
+
+                                        <table class="table">
+                                            <tr>
+                                                <th>
+                                                    Event Name
+                                                </th>
+                                                <th>
+                                                    User Name
+                                                </th>
+                                                <th>
+                                                    Gender
+                                                </th>
+                                                <th>
+                                                    Age
+                                                </th>
+                                                <th>
+                                                    FinalPay
+                                                </th>
+                                                @if (Session["pid"] != null)
+                                                {
+                                                    <th>
+                                                        Action
+                                                    </th>
+                                                }
+
+                                            </tr>
+                                            @foreach (var pdata in (IEnumerable<userselect>)TempData["userselected"])
+                                            {
+
+                                        <tr>
+                                            <td style="color:indianred">
+                                                @Html.DisplayFor(modelItem => pdata.productionevent.ename)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Details","User",new { id=pdata.userid})">@Html.DisplayFor(modelItem => pdata.user.fname)</a>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => pdata.user.gender)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => pdata.user.age)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => pdata.finalpay)
+                                            </td>
+                                            @if (Session["pid"] != null)
+                                            {
+                                                if (TempData["eventend"].Equals("Yes"))
+                                                {
+                                                    if (TempData["rated"].Equals("Yes"))
+                                                    {
+                                                        foreach (var rt in (IEnumerable<rating>)TempData["rating"])
+                                                        {
+                                                            
+                                                            if (rt.rating1 == 1)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                </td>   
+                                                            }
+                                                            else if (rt.rating1 == 1.5)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star-half" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                            else if (rt.rating1 == 2)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                            else if (rt.rating1 == 2.5)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star-half" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                            else if (rt.rating1 == 3)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                            else if (rt.rating1 == 3.5)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star-half" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                            else if (rt.rating1 == 4)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                            else if (rt.rating1 == 4.5)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star-half" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                            else if (rt.rating1 == 5)
+                                                            {
+                                                                <td>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                    <i class="fa fa-star" style="color:gold"></i>
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>
+                                                            @Html.ActionLink("Rate expert", "Create", "Rating", new { uid = pdata.user.userid, eid = Model.peid }, new { @class = "btn btn-outline-success" })
+                                                        </td>
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    <td>
+                                                        @Html.ActionLink("Remove", "Delete", "UserSelect",new { id = pdata.user.userid, peid=pdata.productionevent.peid}, new { @class = "btn btn-outline-danger" })
+                                                    </td>
+                                                }
+                                            }
+                                        </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    <div class="card-header border-0 p-2 pb-0">
+                        <div class="clearfix mb-1">
+                            <div class="pull-left">
+                                <h4 class="text-blue h4 mx-3 my-3">Biddings on this event</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="card-body pt-0">
+                        <div class="user-about-block">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <div class="col align-items-center my-3">
+                                    </div>
+
+                                    <table class="table">
+                                        <tr>
+                                            <th>
+                                                Event Name
+                                            </th>
+                                            <th>
+                                                User Name
+                                            </th>
+                                            <th>
+                                                Application Date
+                                            </th>
+                                            <th>
+                                                Expected Payment
+                                            </th>
+                                            <th>
+                                                Message
+                                            </th>
+                                            @if (TempData["selected"].Equals("No") && Session["pid"] != null)
+                                            {
+                                                <th>
+                                                    Action
+                                                </th>
+                                            }
+                                        </tr>
+
+                                        @if (Session["uid"] != null && TempData["NotFoundUserBids"] != null)
+                                        {
+                                            <tr>
+                                                <td style="color:indianred" colspan="5"><center>@TempData["NotFoundUserBids"]</center></td>
+                                            </tr>
+                                        }
+                                        @if (Session["pid"] != null && TempData["NotBidFound"] != null)
+                                        {
+                                            <tr>
+                                                <td style="color:indianred" colspan="5"><center>@TempData["NotBidFound"]</center></td>
+                                            </tr>
+                                        }
+
+
+                                        @if (Session["pid"] != null)
+                                        {
+                                            foreach (var pdata in (IEnumerable<userapply>)TempData["pdata"])
+                                            {
+
+                                                <tr>
+                                                    <td style="color:indianred">
+                                                        @Html.DisplayFor(modelItem => pdata.productionevent.ename)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Details","User",new { id=pdata.userid})">@Html.DisplayFor(modelItem => pdata.user.fname)</a>
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => pdata.appdate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => pdata.expay)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => pdata.message)
+                                                    </td>
+                                                    @if (TempData["selected"].Equals("No"))
+                                                    {
+                                                        <td>
+                                                            @Html.ActionLink("Select", "Create", "UserSelect", new { uid = pdata.user.userid, eid = pdata.productionevent.peid, pay = pdata.expay }, new { @class = "btn btn-outline-success" })
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+
+                                        @if (Session["uid"] != null)
+                                        {
+                                            foreach (var pdata in (IEnumerable<userapply>)TempData["bids"])
+                                            {
+
+                                                <tr>
+                                                    <td style="color:indianred">
+                                                        @Html.DisplayFor(modelItem => pdata.productionevent.ename)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Details","User",new { id=pdata.userid})">@Html.DisplayFor(modelItem => pdata.user.fname)</a>
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => pdata.appdate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => pdata.expay)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => pdata.message)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Required Js -->
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/pcoded.min.js"></script>
+</body>
+</html>
+
+
+
+

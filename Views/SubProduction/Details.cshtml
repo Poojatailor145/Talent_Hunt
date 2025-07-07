@@ -1,0 +1,51 @@
+﻿@model TalentHunt.Models.subproduction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>subproduction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.production.pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.production.pname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.plan.plantype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plan.plantype)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.startdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enddate)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.spid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

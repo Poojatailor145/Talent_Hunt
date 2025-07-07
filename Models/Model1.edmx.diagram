@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a4909bc86b949e2b79b5db52204d531" Name="Diagram1">
+        <EntityTypeShape EntityType="huntdbModel.eventrequire" Width="1.5" PointX="9" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.image" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.plan" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.production" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.subproduction" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.talent" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.user" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.userapply" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.userprofile" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.userselect" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="huntdbModel.video" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <AssociationConnector Association="huntdbModel.FK_eventrequire_production" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_eventrequire_talent" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_images_talent" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_images_user" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_subproduction_plan" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_subproduction_production" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_userapply_production" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_userprofile_talent" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_videos_talent" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_userapply_user" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_userprofile_user" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_userselect_user" ManuallyRouted="false" />
+        <AssociationConnector Association="huntdbModel.FK_videos_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="huntdbModel.subuser" Width="1.5" PointX="6" PointY="4.875" />
+        <AssociationConnector Association="huntdbModel.FK_subuser_plan" />
+        <AssociationConnector Association="huntdbModel.FK_subuser_user" />
+        <EntityTypeShape EntityType="huntdbModel.eventrate" Width="1.5" PointX="3" PointY="19.125" />
+        <EntityTypeShape EntityType="huntdbModel.rating" Width="1.5" PointX="6" PointY="19.125" />
+        <AssociationConnector Association="huntdbModel.FK_eventrate_user" />
+        <AssociationConnector Association="huntdbModel.FK_ratings_user" />
+        <EntityTypeShape EntityType="huntdbModel.admin" Width="1.5" PointX="8.625" PointY="1" />
+        <EntityTypeShape EntityType="huntdbModel.productionevent" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="huntdbModel.FK_eventrate_productionevent" />
+        <AssociationConnector Association="huntdbModel.FK_eventrequire_productionevent" />
+        <AssociationConnector Association="huntdbModel.FK_productionevent_production" />
+        <AssociationConnector Association="huntdbModel.FK_ratings_productionevent" />
+        <AssociationConnector Association="huntdbModel.FK_userapply_productionevent" />
+        <AssociationConnector Association="huntdbModel.FK_userselect_productionevent" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

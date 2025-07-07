@@ -1,0 +1,97 @@
+﻿@model IEnumerable<TalentHunt.Models.admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>TalentHunt</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+</head>
+<body>
+
+    @{
+        Html.RenderPartial("_Header");
+        Html.RenderPartial("_Leftbar");
+    }
+    <div class="mobile-menu-overlay"></div>
+
+    <div class="main-container-2">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+
+                <!-- Default Basic Forms Start -->
+
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix mb-20">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Admins</h4>
+                        </div>
+                        <div class="pull-right">
+                            <h4 class="text-blue h4">@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-outline-primary" })</h4>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Pic</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    <img src="@Url.Content(item.photo)" style="border-radius:30%" height="100" width="100" />
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.aname)</td>
+                                <td>@Html.DisplayFor(modelItem => item.age)</td>
+                                <td>@Html.DisplayFor(modelItem => item.gender)</td>
+                                <td>@Html.DisplayFor(modelItem => item.email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.username)</td>
+                                <td>@Html.DisplayFor(modelItem => item.password)</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.aid }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.aid }, new {onclick = $"return confirm('Are you sure you want to delete {item.aname} from the admin list ?')" })
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- js -->
+    <script src="~/vendors/scripts/core.js"></script>
+    <script src="~/vendors/scripts/script.min.js"></script>
+    <script src="~/vendors/scripts/process.js"></script>
+    <script src="~/vendors/scripts/layout-settings.js"></script>
+</body>
+</html>

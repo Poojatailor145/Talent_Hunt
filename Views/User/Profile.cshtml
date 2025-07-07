@@ -1,0 +1,172 @@
+﻿@model IEnumerable<TalentHunt.Models.user>
+@using TalentHunt.Models
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TalentHunt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+
+<body class="">
+
+    @{
+        Html.RenderPartial("__Navbar");
+    }
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container2">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card user-card user-card-2 shape-right">
+                                        <div class="card-header border-0 p-2 pb-0">
+                                            <div class="cover-img-block" style="height:300px">
+                                                <img src="~/assets/images/user/wall2.jpg" alt="" class="img-fluid">
+                                                <div class="overlay"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <div class="user-about-block">
+                                                <div class="row align-items-center">
+                                                    <div class="col">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto col pr-0">
+                                                                <div class="change-profile">
+                                                                    <div class="dropdown">
+                                                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <div class="profile-dp">
+                                                                                <img class="img-radius img-fluid wid-100" src="@Url.Content(Session["photo"].ToString())" alt="User image">
+                                                                                <div class="overlay">
+                                                                                    <span>change</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                        <div class="dropdown-menu">
+                                                                            <a class="dropdown-item" href="#"><i class="feather icon-upload-cloud mr-2"></i>upload new</a>
+                                                                            <a class="dropdown-item" href="#"><i class="feather icon-image mr-2"></i>from photos</a>
+                                                                            <a class="dropdown-item" href="#"><i class="feather icon-shield mr-2"></i>Protact</a>
+                                                                            <a class="dropdown-item" href="#"><i class="feather icon-trash-2 mr-2"></i>remove</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <h6 class="mb-1">@TempData["fname"] @TempData["lname"]</h6>
+                                                                <p class="mb-0">@TempData["gender"]  |  @TempData["age"]</p>
+                                                                <p class="mb-0" style="border-radius:50%; border-color:lawngreen; color:green">
+                                                                    @TempData["ratings"] <i class="fa fa-star" style="color:gold"></i>
+                                                                </p>
+
+                                                            </div>
+                                                        </div><br />
+                                                              
+
+                                                        <div>
+                                                            @Html.ActionLink("Add Talent", "Create", "UserProfile", new { id = Session["uid"] }, new { @class = "btn btn-outline-primary" })
+
+                                                        </div>
+
+                                                        <hr style="color:darkblue" />
+
+                                                        <div>
+                                                            <p style="color:black; font-size:large" class="mb-1">TALENTS</p><br />
+                                                            @foreach (var pdata in (IEnumerable<userprofile>)TempData["talentlists"])
+                                                            {
+                                                                <h5 style="color:indianred">@Html.DisplayFor(modelItem => pdata.talent.ttype)</h5>
+                                                                <p class="mb-0">Experience : @Html.DisplayFor(modelItem => pdata.experience) years</p>
+                                                                <p class="mb-0">Portfolio : @Html.DisplayFor(modelItem => pdata.portfolio)</p>
+                                                                <p class="mb-0" style="color:blue">@Html.ActionLink("Edit Talent info", "Edit", "Userprofile", new { id = pdata.upid }, new { @area = "" })</p>
+                                                                <br />
+                                                            }
+
+                                                        </div>
+
+                                                        <hr style="color:darkblue" />
+
+
+
+                                                        <p style="color:black; font-size:large" class="mb-1">IMAGES</p><br />
+                                                        <br />
+                                                        <div class="d-inline-flex">
+
+                                                            <br />
+                                                            <div class="mb-20">
+                                                                @foreach (var piclists in (IEnumerable<image>)TempData["piclists"])
+                                                                {
+                                                                <div class="card d-inline-flex mx-2">
+                                                                    <img src="@Url.Content(piclists.image1)" height="200" width="200" class="mx-2" />
+                                                                    <br />
+                                                                    <p class="mx-2">@piclists.caption</p>
+                                                                    <p class="mb-0" style="color:blue">@Html.ActionLink("Delete", "Delete", "Images", new { id = piclists.iid }, new { @class = "text-danger mx-2", onclick = "return confirm('Are you sure you want to delete this Image?')" })</p>
+                                                                </div>
+                                                                }
+                                                            </div>
+                                                        </div><br />
+                                                        @Html.ActionLink("Add Image", "Create", "Images", new { id = Session["uid"] }, new { @class = "btn btn-outline-primary" })
+
+
+                                                        <hr style="color:darkblue" />
+
+                                                        <p style="color:black; font-size:large" class="mb-1">VIDEOS</p>
+                                                        <div class="d-inline-flex">
+
+                                                            <br />
+                                                            <div class="mb-20">
+                                                                @foreach (var videolists in (IEnumerable<video>)TempData["videolists"])
+                                                                {
+                                                                <div class="card d-inline-flex mx-2">
+                                                                    <video height="300" width="300" controls class="mx-2">
+                                                                        <source src="@Url.Content(videolists.video1)" type="audio/mp4" />
+                                                                    </video><br />
+                                                                    <p class="mx-2">@videolists.caption</p>
+                                                                    <p class="mb-0" style="color:blue">@Html.ActionLink("Delete", "Delete", "Videos", new { id = videolists.vid }, new { @class = "text-danger mx-2", onclick = "return confirm('Are you sure you want to delete this Video?')" })</p>
+                                                                </div>
+                                                                }
+                                                            </div><br />
+                                                        </div><br />
+                                                        @Html.ActionLink("Add Video", "Create", "Videos", new { id = Session["uid"] }, new { @class = "btn btn-outline-primary" })
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Required Js -->
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/pcoded.min.js"></script>
+</body>
+</html>
+
+
+

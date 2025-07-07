@@ -1,0 +1,149 @@
+﻿@model TalentHunt.Models.production
+@using TalentHunt.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+    <title>TalentHunt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+
+<body class="">
+
+    @{
+        Html.RenderPartial("__Navbar");
+    }
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container2">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card user-card user-card-2 shape-right">
+                                        <div class="card-header border-0 p-2 pb-0">
+                                            <div class="clearfix mb-1">
+                                                <div class="pull-left">
+                                                    <h4 class="text-blue h4 mx-3 my-3">Production Details</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mx-4">
+                                            <div class="col-auto col pr-0">
+                                                <div class="change-profile">
+                                                    <div class="dropdown">
+                                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <div class="profile-dp">
+                                                                <img class="img-radius img-fluid wid-100" src="@Url.Content(Model.pimage)" alt="User image">
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <h6 class="mb-1" style="color:indianred">@Html.DisplayFor(model => model.pname)</h6>
+                                                <p>
+                                                    Run By @Html.DisplayFor(model => model.phead)
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <p class="mx-4">
+                                            Description : @Html.DisplayFor(model => model.description)
+                                        </p>
+                                        <br />
+                                        <div class="card-body pt-0">
+                                            <div class="user-about-block">
+                                                <div class="row align-items-center">
+                                                    <div class="col">
+                                                        <div class="col align-items-center my-3">
+                                                        </div>
+
+                                                        <table border="0" class="table">
+                                                            <tr>
+                                                                <th>Address</th>
+                                                                <td>@Html.DisplayFor(model => model.address)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Contact No</th>
+                                                                <td>@Html.DisplayFor(model => model.contactno)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Email</th>
+                                                                <td>@Html.DisplayFor(model => model.email)</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 class="h4 text-blue mb-30">All Events</h4>
+                                    @if(TempData["NotFound"]!=null)
+                                    {
+                                        <p style="color:indianred">@TempData["NotFound"]</p>
+                                    }
+                                    <div class="mb-20">
+                                        @foreach (var plists in (IEnumerable<productionevent>)TempData["events"])
+                                        {
+                                            <div class="card mx-2  d-inline-flex" style="width: 18rem;">
+                                                <img class="card-img-top" src="@Url.Content(plists.image)" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <p class="card-text"><strong>@Html.DisplayFor(modelItem => plists.ename)</strong></p>
+                                                    <p class="card-text">Start Date : @Html.DisplayFor(modelItem => plists.startdate) </p>
+                                                    <p class="card-text">End Date : @Html.DisplayFor(modelItem => plists.enddate) </p>
+                                                    <p class="card-text">Deadline : @Html.DisplayFor(modelItem => plists.appdeadline)</p>
+                                                    <p class="card-text">@Html.DisplayFor(modelItem => plists.description)</p>
+                                                </div>
+                                                @Html.ActionLink("View More", "Details", "ProductionEvent", new { id = plists.peid }, new { @class = "btn btn-outline-primary my-3 mx-2" })
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Required Js -->
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/pcoded.min.js"></script>
+</body>
+</html>
+
+
+
+

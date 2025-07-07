@@ -1,0 +1,111 @@
+﻿<div class="left-side-bar">
+    <div class="brand-logo">
+        <a href="#">
+            <img src="~/vendors/images/logoadmin.png" alt="" class="light-logo">
+            @*<img src="~/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">*@
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="ion-close-round"></i>
+        </div>
+    </div>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+                <li>
+                    <a href="/AdminLogin/Dashboard" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                    </a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-list"></span><span class="mtext">Talents</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Add Talent", "Create", "Talent", new { @area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Show Talents", "Index", "Talent", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-price-tag"></span><span class="mtext">Plans</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Add Plan", "Create", "Plan", new { @area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Show Plan", "Index", "Plan", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-crown"></span><span class="mtext">Productions</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Show Productions", "ProductionView", "Production", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-light-bulb"></span><span class="mtext">Experts</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Show Experts", "UserView", "User", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-microphone-1"></span><span class="mtext">Events</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Show Events", "EventView", "ProductionEvent", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-bell"></span><span class="mtext">Biddings</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Show Biddings", "BidView", "UserApply", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-star"></span><span class="mtext">Ratings</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Expert Ratings", "UrateView", "Rating", new { @area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Event Ratings", "ErateView", "EventRate", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-money"></span><span class="mtext">Subscriptions</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Expert Subscriptions", "UserSub", "SubUser", new { @area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Production Subscriptions", "ProSub", "SubProduction", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-user"></span><span class="mtext">Admin</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Add Admin", "Create", "Admin", new { @area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Show Admins", "Index", "Admin", new { @area = "" }, new { @class = "" })</li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model TalentHunt.Models.userselect
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>userselect</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.finalpay)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.finalpay)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productionevent.ename)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productionevent.ename)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.user.fname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.user.fname)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.usid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

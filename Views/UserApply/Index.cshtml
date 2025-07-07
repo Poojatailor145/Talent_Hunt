@@ -1,0 +1,367 @@
+﻿@model IEnumerable<TalentHunt.Models.userapply>
+@using TalentHunt.Models
+
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119386393-1');</script>
+
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+
+<body>
+    @{ 
+        Html.RenderPartial("__Navbar");
+    }
+
+    @{ 
+        if (Session["uid"] != null)
+        {
+
+            <div class="pcoded-main-container2">
+                <div class="pcoded-wrapper">
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- [ Main Content ] start -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card user-card user-card-2 shape-right">
+                                                <div class="card-header border-0 p-2 pb-0">
+                                                    <div class="clearfix mb-1">
+                                                        <div class="pull-left">
+                                                            <h4 class="text-blue h4 mx-3 my-3">Bidding Details</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br /><br />
+                                                <div class="card-body pt-0">
+                                                    <div class="user-about-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <div class="col align-items-center my-3">
+                                                                </div>
+
+                                                                <table class="table">
+                                                                        <tr>
+                                                                            <th>
+                                                                                Production
+                                                                            </th>
+                                                                            <th>
+                                                                                Event Name
+                                                                            </th>
+                                                                            <th>
+                                                                                Application Date
+                                                                            </th>
+                                                                            <th>
+                                                                                Expected Payment
+                                                                            </th>
+                                                                            <th>
+                                                                                Message
+                                                                            </th>
+                                                                            <th>
+                                                                                Status
+                                                                            </th>
+                                                                            <th>
+                                                                                Ratings
+                                                                            </th>
+                                                                            <th>
+                                                                                Action
+                                                                            </th>
+                                                                        </tr>
+
+                                                                    @if (TempData["NotFound"] != null)
+                                                                    {
+                                                                        <tr>
+                                                                            <td colspan="5" style="color:indianred"><center>@TempData["NotFound"]</center></td>
+                                                                        </tr>
+                                                                    }
+
+                                                                    @foreach (var pdata in (IEnumerable<userapply>)TempData["pdata"])
+                                                                    {
+                                                                        <tr>
+                                                                            <td style="color:indianred">
+                                                                                @Html.DisplayFor(modelItem => pdata.productionevent.ename)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.production.pname)
+                                                                            </td>
+                                                                            <td>
+                                                                                @pdata.appdate.ToString("dd/MM/yyyy")
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.expay)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.message)
+                                                                            </td>
+                                                                            <td>
+                                                                                @if (pdata.status.Equals("selected"))
+                                                                                {
+                                                                                    <p class="text-success">@Html.DisplayFor(modelItem => pdata.status)</p>
+                                                                                }
+                                                                                @if (pdata.status.Equals("applied"))
+                                                                                {
+                                                                                    <p class="text-warning">@Html.DisplayFor(modelItem => pdata.status)</p>
+                                                                                }
+                                                                            </td>
+                                                                            @foreach (var rt in (IEnumerable<rating>)TempData["rates"])
+                                                                            {
+                                                                                if (pdata.peid == rt.peid)
+                                                                                {
+                                                                                    if (rt.rating1 == 1)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 1.5)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star-half-empty" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 2)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 2.5)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star-half-empty" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 3)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 3.5)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star-half-empty" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 4)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 4.5)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star-half-empty" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else if (rt.rating1 == 5)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                            <i class="fa fa-star" style="color:gold"></i>
+                                                                                        </td>
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <td style="color:red">
+                                                                                        -----
+                                                                                    </td>
+                                                                                }
+                                                                            }
+                                                                            @if (TempData["nrates"].Equals("No"))
+                                                                            {
+                                                                                <td style="color:red">
+                                                                                    -----
+                                                                                </td>
+                                                                            }
+                                                                            @if(pdata.productionevent.enddate > ViewBag.date)
+                                                                            {
+                                                                                <td>
+                                                                                    @Html.ActionLink("Withdraw","Delete","UserApply",new { id = pdata.uaid },new { @class = "btn btn-outline-danger", onclick = $"return confirm('Are you sure you want to withdraw your {pdata.productionevent.ename} event Bid?')"})
+                                                                                </td>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <td>
+                                                                                    Event Completed
+                                                                                </td>
+                                                                            }
+                                                                        </tr>
+                                                                    }
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        }
+
+        if (Session["pid"] != null)
+        {
+
+            <div class="pcoded-main-container2">
+                <div class="pcoded-wrapper">
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- [ Main Content ] start -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card user-card user-card-2 shape-right">
+                                                <div class="card-header border-0 p-2 pb-0">
+                                                    <div class="clearfix mb-1">
+                                                        <div class="pull-left">
+                                                            <h4 class="text-blue h4 mx-3 my-3">Bidding Details</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br /><br />
+                                                <div class="card-body pt-0">
+                                                    <div class="user-about-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <div class="col align-items-center my-3">
+                                                                </div>
+
+                                                                <table class="table">
+                                                                    <tr>
+                                                                        <th>
+                                                                            Event Name
+                                                                        </th>
+                                                                        <th>
+                                                                            User Name
+                                                                        </th>
+                                                                        <th>
+                                                                            Application Date
+                                                                        </th>
+                                                                        <th>
+                                                                            Expected Payment
+                                                                        </th>
+                                                                        <th>
+                                                                            Message
+                                                                        </th>
+                                                                    </tr>
+                                                                    @if (TempData["NotFound"] != null)
+                                                                    {
+                                                                        <tr>
+                                                                            <td colspan="5" style="color:indianred"><center>@TempData["NotFound"]</center></td>
+                                                                        </tr>
+                                                                    }
+                                                                    @foreach (var pdata in (IEnumerable<userapply>)TempData["pdata"])
+                                                                    {
+                                                                        <tr>
+                                                                            <td style="color:indianred">
+                                                                                @Html.DisplayFor(modelItem => pdata.productionevent.ename)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.user.fname)
+                                                                            </td>
+                                                                            <td>
+                                                                                @pdata.appdate.ToString("dd/MM/yyyy")
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.expay)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => pdata.message)
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        } 
+     }
+
+
+    <!-- js -->
+    <script src="~/vendors/scripts/core.js"></script>
+    <script src="~/vendors/scripts/script.min.js"></script>
+    <script src="~/vendors/scripts/process.js"></script>
+    <script src="~/vendors/scripts/layout-settings.js"></script>
+
+</body>
+</html>

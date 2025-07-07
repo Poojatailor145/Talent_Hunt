@@ -1,0 +1,174 @@
+﻿@model TalentHunt.ModelView.login
+
+@{ ViewBag.Title = "Login";
+                Layout = null; }
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>TalentHunt</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+    <style>
+        /* Style The Dropdown Button */
+        .dropbtn {
+            background-color: #fff;
+            color: blue;
+            padding: 10px;
+            font-size: 25px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: inherit;
+            display: inline-block;
+            margin-right: 50px;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            text-align: center;
+            border-radius: 10px;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 6px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                    background-color: #fff
+                }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body class="login-page">
+    <div class="login-header box-shadow">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="brand-logo">
+                <a href="@Url.Action("Index","Home")">
+                    <img src="~/vendors/images/logo1.png" height="145" width="145" alt="Logo">
+                </a>
+            </div>
+            <div class="login-menu">
+                <div class="dropdown">
+                    <button class="dropbtn">Register</button>
+                    <div class="dropdown-content">
+                        <a href="@Url.Action("Create")">User</a>
+                        <a href="@Url.Action("planselect","Plan")">Production</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 col-lg-7">
+                    <img src="~/vendors/images/login-page-img.png" alt="">
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="login-box bg-white box-shadow border-radius-10">
+                        <div class="login-title">
+                            <h2 class="text-center text-primary">Login to Talent Hunt</h2>
+                        </div>
+                        @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="select-role">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn">
+                                        <input type="radio" name="options" id="user" value="user">
+                                        <div class="icon"><img src="~/vendors/images/person.svg" class="svg"></div>
+                                        <span>I'm</span>
+                                        Expert
+                                    </label>
+                                    <label class="btn">
+                                        <input type="radio" name="options" id="production" value="production">
+                                        <div class="icon"><img src="~/vendors/images/briefcase.svg" class="svg"></div>
+                                        <span>I'm</span>
+                                        Production
+                                    </label>
+                                </div>
+                            </div>
+                             
+                            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                            <div class="input-group custom">
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter UserName", @value = ViewBag.uUsername } })
+                                <div class="input-group-append custom">
+                                <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                                </div>
+                            </div>
+                            
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            <div class="input-group custom">
+                                 @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Password", @value = ViewBag.uPassword } })
+                                <div class="input-group-append custom">
+                                     <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                 </div>
+                            </div>
+                            <span class="text-danger">@ViewBag.err</span>
+                            <span class="text-danger">@ViewBag.select</span>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group mb-0">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                                        @*<input class="btn btn-primary btn-lg btn-block" type="submit" />*@
+                                    </div>
+                                    @Html.Raw(TempData["Register"])
+                                </div>
+                            </div>
+                         }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- js -->
+    <script src="~/vendors/scripts/core.js"></script>
+    <script src="~/vendors/scripts/script.min.js"></script>
+    <script src="~/vendors/scripts/process.js"></script>
+    <script src="~/vendors/scripts/layout-settings.js"></script>
+</body>
+</html>
